@@ -25,8 +25,10 @@ public class ASDI implements Parser {
             if (this.err)
                 return false;
 
-            //? Comprobar si item es terminal o no terminal.
-            if ((item.equals("Q")) || (item.equals("D")) || (item.equals("P")) || (item.equals("A")) || (item.equals("A1")) || (item.equals("A2")) || (item.equals("A3")) || (item.equals("T")) || (item.equals("T1")) || (item.equals("T2")) || (item.equals("T3"))) {
+            // ? Comprobar si item es terminal o no terminal.
+            if ((item.equals("Q")) || (item.equals("D")) || (item.equals("P")) || (item.equals("A"))
+                    || (item.equals("A1")) || (item.equals("A2")) || (item.equals("A3")) || (item.equals("T"))
+                    || (item.equals("T1")) || (item.equals("T2")) || (item.equals("T3"))) {
                 System.out.println("»»» First Case");
                 System.out.println("Index\nItem: " + item + ". Pre analysis:  " + preAn + ".");
                 this.buscarIndices(item, this.preAn);
@@ -51,7 +53,7 @@ public class ASDI implements Parser {
                     || ((item.equals("$")) && (this.preAn.tipo.equals(TipoToken.EOF)))) {
 
                 System.out.println("»»» Second case");
-                //? Si son iguales
+                // ? Si son iguales
                 item = pila.pop();
                 i++;
                 this.preAn = this.tokens.get(i);
@@ -60,7 +62,7 @@ public class ASDI implements Parser {
 
             } else if (item.equals("E")) {
                 System.out.println("»»» Third case");
-                //? No se inserta nada en la pila
+                // ? No se inserta nada en la pila
                 item = pila.pop();
                 System.out.println("Item: " + item + ". Pre analysis:  " + preAn + ".");
                 System.out.println("»»» End third case");
@@ -163,12 +165,12 @@ public class ASDI implements Parser {
 
     public void addBatteryInv() {
         System.out.println("»»» Inverse added");
-        char c; //? Distingue palabras de producciónes
+        char c; // ? Distingue palabras de producciónes
         String aux = "";
         int x = this.prod.length() - 1;
 
         while (x >= 0) {
-            c = this.prod.charAt(x);//? Asigna último char del lexema
+            c = this.prod.charAt(x);// ? Asigna último char del lexema
             if ((c == ' ') || (x == 0)) {
                 if (x == 0)
                     aux += c;
@@ -187,7 +189,7 @@ public class ASDI implements Parser {
     }
 
     public String reverse(String cad) {
-        //? Revertir la cadena usando bucle y concatenación
+        // ? Revertir la cadena usando bucle y concatenación
         String inverted = "";
         for (int i = cad.length() - 1; i >= 0; i--) {
             inverted += cad.charAt(i);
