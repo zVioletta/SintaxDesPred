@@ -33,7 +33,7 @@ public class ASDI implements Parser{
         while( !pila.empty() ){//Miestras la pila no este vacia
 
             if( this.err ) return false;//Se checa que no haya errores
-            
+
             //Comprobar que item es un noTerm o un termina (alguin tipo de Token)
             if( ( item.equals("Q") )  || ( item.equals("D") )  || ( item.equals("P") ) || ( item.equals("A") )  || ( item.equals("A1") ) || ( item.equals("A2") ) || ( item.equals("A3") ) || ( item.equals("T") ) || ( item.equals("T1") ) || ( item.equals("T2") ) || ( item.equals("T3") ) ){
                 System.out.println("****Primer caso****");
@@ -54,7 +54,7 @@ public class ASDI implements Parser{
             //}else if( this.auxItem.get(0).tipo == preAn.tipo ){
             }else if( ( ( item.equals("select") ) && ( this.preAn.tipo.equals(TipoToken.SELECT) ) )
                    || ( ( item.equals("from") )   && ( this.preAn.tipo.equals(TipoToken.FROM) ) )
-                   || ( ( item.equals("distinc")) && ( this.preAn.tipo.equals(TipoToken.DISTINCT) ) )
+                   || ( ( item.equals("distinct")) && ( this.preAn.tipo.equals(TipoToken.DISTINCT) ) )
                    || ( ( item.equals("*") )      && ( this.preAn.tipo.equals(TipoToken.ASTERISCO) ) )
                    || ( ( item.equals(",") )      && ( this.preAn.tipo.equals(TipoToken.COMA) ) )
                    || ( ( item.equals("." ))      && ( this.preAn.tipo.equals(TipoToken.PUNTO) ) )
@@ -277,24 +277,4 @@ public class ASDI implements Parser{
         return invertida;
 
     }
-
-    /*private void ejecutar(String source){
-        //Metodo para determinar si item un term o un noTerm
-        Scanner scanner = new Scanner(source);
-        this.auxItem = scanner.scanTokens();
-      
-    }
-
-    private void match(TipoToken tt){
-        if(preAn.tipo == tt){
-            i++;
-            preAn = tokens.get(i);
-        }
-        else{
-            err = true;
-            System.out.println("Error encontrado");
-        }
-
-    }*/
-
 }

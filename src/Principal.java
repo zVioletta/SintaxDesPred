@@ -27,20 +27,13 @@ public class Principal {
     private static void ejecutar(String source){
         Scanner scanner = new Scanner(source);
         List<Token> tokens = scanner.scanTokens();
-
         for(Token token : tokens){
             System.out.println(token);
         }
-
-        /*Parser parser = new ASDI(tokens);
-        parser.parse();*/
+        Parser parser = new ASDI(tokens);
+        parser.parse();
     }
 
-    /* LLAMADA AL ASDI
-    El método error se puede usar desde las distintas clases
-    para reportar los errores:
-    Interprete.error(....);
-     */
     static void error(int linea, String mensaje){
         reportar(linea, "", mensaje);
     }
@@ -51,5 +44,4 @@ public class Principal {
         );
         existenErrores = true;
     }
-
 }
