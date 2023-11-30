@@ -7,35 +7,35 @@ public class Tabla {
 
     }
 
-    public Map < String, Map<String, String> > generarTablaAnalisis() {
-        Map<String, Map<String, String>> tabla = new HashMap<>();
+    public Map < String, Map<String, String> > tableAnalysis() {
+        Map<String, Map<String, String>> t = new HashMap<>();
         //  "Ɛ"   Simbolos de entrada            id|  ,  |sel|dist|from|  *  | .  | $
-        tabla.put("Q", crearFila("!", "!", "1", "!", "!", "!", "!", "!"));
-        tabla.put("D", crearFila("2", "!", "!", "2", "!", "2", "!", "!"));
-        tabla.put("P", crearFila("3", "!", "!", "!", "!", "3", "!", "!"));
-        tabla.put("A", crearFila("4", "!", "!", "!", "!", "!", "!", "!"));
-        tabla.put("A1", crearFila("!", "5", "!", "!", "5", "!", "!", "!"));
-        tabla.put("A2", crearFila("6", "!", "!", "!", "!", "!", "!", "!"));
-        tabla.put("A3", crearFila("!", "7", "!", "!", "7", "!", "7", "!"));
-        tabla.put("T", crearFila("8", "!", "!", "!", "!", "!", "!", "!"));
-        tabla.put("T1", crearFila("!", "9", "!", "!", "!", "!", "!", "9"));
-        tabla.put("T2", crearFila("10", "!", "!", "!", "!", "!", "!", "!"));
-        tabla.put("T3", crearFila("11", "11", "!", "!", "!", "!", "!", "11"));
+        t.put("Q", crearFila("!", "!", "1", "!", "!", "!", "!", "!"));
+        t.put("D", crearFila("2", "!", "!", "2", "!", "2", "!", "!"));
+        t.put("P", crearFila("3", "!", "!", "!", "!", "3", "!", "!"));
+        t.put("A", crearFila("4", "!", "!", "!", "!", "!", "!", "!"));
+        t.put("A1", crearFila("!", "5", "!", "!", "5", "!", "!", "!"));
+        t.put("A2", crearFila("6", "!", "!", "!", "!", "!", "!", "!"));
+        t.put("A3", crearFila("!", "7", "!", "!", "7", "!", "7", "!"));
+        t.put("T", crearFila("8", "!", "!", "!", "!", "!", "!", "!"));
+        t.put("T1", crearFila("!", "9", "!", "!", "!", "!", "!", "9"));
+        t.put("T2", crearFila("10", "!", "!", "!", "!", "!", "!", "!"));
+        t.put("T3", crearFila("11", "11", "!", "!", "!", "!", "!", "11"));
 
-        return tabla;
+        return t;
     }
 
     private Map<String, String> crearFila(String... valores) {
-        Map<String, String> fila = new HashMap<>();
-        fila.put("id", valores[0]);
-        fila.put(",", valores[1]);
-        fila.put("select", valores[2]);
-        fila.put("dinstict", valores[3]);
-        fila.put("from", valores[4]);
-        fila.put("*", valores[5]);
-        fila.put(".", valores[6]);
-        fila.put("$", valores[7]);
-        return fila;
+        Map<String, String> row = new HashMap<>();
+        row.put("id", valores[0]);
+        row.put(",", valores[1]);
+        row.put("select", valores[2]);
+        row.put("dinstict", valores[3]);
+        row.put("from", valores[4]);
+        row.put("*", valores[5]);
+        row.put(".", valores[6]);
+        row.put("$", valores[7]);
+        return row;
     }
 
 }
