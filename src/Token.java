@@ -32,4 +32,8 @@ public class Token {
     public String toString(){
         return tipo + " " + lexema + " ";
     }
+
+    public String getLexema(){
+        return lexema;
+    }
 }
