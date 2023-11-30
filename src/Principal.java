@@ -30,8 +30,14 @@ public class Principal {
         for(Token token : tokens){
             System.out.println(token);
         }
-        Parser parser = new ASDI(tokens);
-        parser.parse();
+
+        ASDI analizador = new ASDI(tokens);
+        boolean resultado = analizador.entryAnalysis();
+        if (resultado) {
+            System.out.println("Análisis sintáctico exitoso");
+        } else {
+            System.out.println("Error de sintaxis");
+        }
     }
 
     static void error(int linea, String mensaje){
