@@ -27,17 +27,13 @@ public class Principal {
     private static void ejecutar(String source){
         Scanner scanner = new Scanner(source);
         List<Token> tokens = scanner.scanTokens();
+        System.out.println("---\nLexic Analysis\n---");
         for(Token token : tokens){
             System.out.println(token);
         }
 
-        ASDI analizador = new ASDI(tokens);
-        boolean resultado = analizador.entryAnalysis();
-        if (resultado) {
-            System.out.println("Análisis sintáctico exitoso");
-        } else {
-            System.out.println("Error de sintaxis");
-        }
+        Parser parser = new ASDI(tokens);
+        parser.parse();
     }
 
     static void error(int linea, String mensaje){
