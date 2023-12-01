@@ -76,7 +76,7 @@ public class ASDI implements Parser {
                     this.indexSearch(item, this.preAn);
                     if (err)
                         break;
-                    this.prod = this.ta.table[this.j][k];
+                    this.prod = this.ta.table[this.j][this.k];
                     this.addBatteryInv();
                     this.item = battery.peek();
                     break;

@@ -2,7 +2,7 @@ public class Tabla {
     public String[][] table = new String[11][8];
     public Tabla(){
         //! Q
-        table[0][0] = "selectable D from T";
+        table[0][0] = "select D from T";
         table[0][1] = "!";
         table[0][2] = "!";
         table[0][3] = "!";
@@ -14,7 +14,7 @@ public class Tabla {
         //! D
         table[1][0] = "!";
         table[1][1] = "!";
-        table[1][2] = "distableinctable P";
+        table[1][2] = "distinct P";
         table[1][3] = "P";
         table[1][4] = "!";
         table[1][5] = "!";
