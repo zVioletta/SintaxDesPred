@@ -25,6 +25,82 @@ public class ASDI implements Parser {
         this.battery.push("$");
         this.battery.push("Q");
         this.item = battery.pop();
+        return false;
+    }
+
+    public void indexSearch(String j, Token k) {
+        // ? No terminales
+        switch (j) {
+            case "Q":
+                this.j = 0;
+                break;
+            case "D":
+                this.j = 1;
+                break;
+            case "P":
+                this.j = 2;
+                break;
+            case "A":
+                this.j = 3;
+                break;
+            case "A1":
+                this.j = 4;
+                break;
+            case "A2":
+                this.j = 5;
+                break;
+            case "A3":
+                this.j = 6;
+                break;
+            case "T":
+                this.j = 7;
+                break;
+            case "T1":
+                this.j = 8;
+                break;
+            case "T2":
+                this.j = 9;
+                break;
+            case "T3":
+                this.j = 10;
+                break;
+            default:
+                error();
+                err = true;
+                break;
+        }
+
+        // ? Terminales
+        switch (k.tipo) {
+            case SELECT:
+                this.k = 0;
+                break;
+            case FROM:
+                this.k = 1;
+                break;
+            case DISTINCT:
+                this.k = 2;
+                break;
+            case ASTERISCO:
+                this.k = 3;
+                break;
+            case COMA:
+                this.k = 4;
+                break;
+            case PUNTO:
+                this.k = 5;
+                break;
+            case IDENTIFICADOR:
+                this.k = 6;
+                break;
+            case EOF:
+                this.k = 7;
+                break;
+            default:
+                error();
+                err = true;
+                break;
+        }
     }
 
     public void addBatteryInv() {
