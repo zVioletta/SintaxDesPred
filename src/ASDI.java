@@ -37,17 +37,75 @@ public class ASDI implements Parser {
                         terminalAction();
                     }
                     break;
+                case "from":
+                    if (this.preAn.tipo.equals(TipoToken.FROM)) {
+                        terminalAction();
+                    }
+                    break;
+                case "distinct":
+                    if (this.preAn.tipo.equals(TipoToken.DISTINCT)) {
+                        terminalAction();
+                    }
+                    break;
+                case "*":
+                    if (this.preAn.tipo.equals(TipoToken.ASTERISCO)) {
+                        terminalAction();
+                    }
+                    break;
+                case ",":
+                    if (this.preAn.tipo.equals(TipoToken.COMA)) {
+                        terminalAction();
+                    }
+                    break;
+                case ".":
+                    if (this.preAn.tipo.equals(TipoToken.PUNTO)) {
+                        terminalAction();
+                    }
+                    break;
+                case "id":
+                    if (this.preAn.tipo.equals(TipoToken.IDENTIFICADOR)) {
+                        terminalAction();
+                    } else {
+                        error();
+                        this.err = true;
+                    }
+                    break;
 
                 // ? No terminales
                 case "Q", "D", "P", "A", "A1", "A2", "A3", "T", "T1", "T2", "T3":
-                    this.indexSearch(item, this.preAn);
+                    this.searchIndex(item, this.preAn);
                     if (err)
                         break;
                     this.prod = this.ta.table[this.j][k];
                     this.addBatteryInv();
                     this.item = battery.peek();
                     break;
+                case "!":
+                    error();
+                    this.err = true;
+                    break;
+                case "$":
+                    if (this.preAn.tipo.equals(TipoToken.EOF)) {
+                        return true;
+                    }
+                    break;
+                case "E":
+                    battery.pop();
+                    if (!battery.isEmpty())
+                        item = battery.peek();
+                    else
+                        return true;
+                    break;
             }
+            for (String elem : battery) System.out.println("-> " + elem);
+            System.out.println("---");
+        }
+
+        if (preAn.tipo == TipoToken.EOF && !err && this.battery.isEmpty()) {
+            System.out.println("Success!");
+            return true;
+        } else {
+            error();
         }
         return false;
     }
@@ -59,8 +117,7 @@ public class ASDI implements Parser {
         this.preAn = this.tokens.get(i);
     }
 
-    public void indexSearch(String j, Token k) {
-        // ? No terminales
+    public void searchIndex(String j, Token k) {
         switch (j) {
             case "Q":
                 this.j = 0;
@@ -101,7 +158,6 @@ public class ASDI implements Parser {
                 break;
         }
 
-        // ? Terminales
         switch (k.tipo) {
             case SELECT:
                 this.k = 0;
