@@ -25,10 +25,42 @@ public class ASDI implements Parser {
         this.battery.push("$");
         this.battery.push("Q");
         this.item = battery.pop();
+
+        while (item != null) {
+            if (this.err)
+                return false;
+
+            switch (item) {
+                // ? Palabras reservadas
+                case "select":
+                    if (this.preAn.tipo.equals(TipoToken.SELECT)) {
+                        terminalAction();
+                    }
+                    break;
+
+                // ? No terminales
+                case "Q", "D", "P", "A", "A1", "A2", "A3", "T", "T1", "T2", "T3":
+                    this.indexSearch(item, this.preAn);
+                    if (err)
+                        break;
+                    this.prod = this.ta.table[this.j][k];
+                    this.addBatteryInv();
+                    this.item = battery.peek();
+                    break;
+            }
+        }
         return false;
     }
 
-    public void searchIndex(String j, Token k) {
+    public void terminalAction() {
+        battery.pop();
+        item = battery.peek();
+        i++;
+        this.preAn = this.tokens.get(i);
+    }
+
+    public void indexSearch(String j, Token k) {
+        // ? No terminales
         switch (j) {
             case "Q":
                 this.j = 0;
@@ -69,6 +101,7 @@ public class ASDI implements Parser {
                 break;
         }
 
+        // ? Terminales
         switch (k.tipo) {
             case SELECT:
                 this.k = 0;
