@@ -73,7 +73,7 @@ public class ASDI implements Parser {
 
                 // ? No terminales
                 case "Q", "D", "P", "A", "A1", "A2", "A3", "T", "T1", "T2", "T3":
-                    this.indexSearch(item, this.preAn);
+                    this.indxSearch(item, this.preAn);
                     if (err)
                         break;
                     this.prod = this.ta.table[this.j][k];
@@ -117,7 +117,7 @@ public class ASDI implements Parser {
         this.preAn = this.tokens.get(i);
     }
 
-    public void indexSearch(String j, Token k) {
+    public void indxSearch(String j, Token k) {
         switch (j) {
             case "Q":
                 this.j = 0;
